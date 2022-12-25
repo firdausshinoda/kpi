@@ -1,0 +1,41 @@
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.thumb-image{
+  margin: 1% 1% 1% 1%;
+  width: 98%;
+  line-height: 18px; border: 1px solid #dddddd; padding: 10px;
+}
+.kotak{
+  margin: 1% 1% 1% 1%;
+  text-align: center;
+  width: 100%;
+  height: : 100%;
+  line-height: 18px; border: 1px solid #dddddd; padding: 10px;
+}
+.thumb-gallery{
+  margin: 1% 1% 1% 1%;
+  width: 100%;
+  line-height: 18px; border: 1px solid #dddddd; padding: 10px;
+}
+
+.text-gallery{
+  margin: 1% 1% 1% 1%;
+  text-align: center;
+  width: 100%;
+  line-height: 18px; border: 1px solid #dddddd; padding: 10px;
+}

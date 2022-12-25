@@ -1,0 +1,21 @@
+#loading{
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	top: 60%;
+	left: 50%;
+	width: 478px;
+	height: 230px;
+	padding: 17px;
+	border-radius: 5px;
+	text-align: center;
+	position: fixed;
+	margin-left: -256px;
+	margin-top: -200px;
+	overflow: hidden;
+	display: none;
+
+}
+#loading_page{
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	top: 30%;
+	text-align: center;
+}

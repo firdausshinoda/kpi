@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <?php $this->load->view('style/Vhead'); ?>
+  <body class="hold-transition skin-brown sidebar-mini fixed" onload="viewdata();">
+    <div class="wrapper">
+      <?php $this->load->view('admin/Vheader') ?>
+      <?php $this->load->view('admin/Vsidebar-menu') ?>
+
+      <div class="content-wrapper">
+        <section class="content-header">
+          <h1>
+            Setelan <small>Surat Ijin KP</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Setelan</a></li>
+            <li class="active">Surat Ijin KP</li>
+          </ol>
+        </section>
+
+        <section class="content connectedSortable">
+          <div class="row">
+            <div id="viewdata"></div>
+          </div>
+        </section>
+      </div>
+      <?php $this->load->view('style/Vfooter'); ?>
+    </div>
+
+    <?php $this->load->view('style/Vjs'); ?>
+    <script type="text/javascript">
+      function viewdata()
+      {
+        loading_page_start();
+        document.getElementById('setelan').setAttribute("class", "active");
+        document.getElementById('sikp').setAttribute("class", "active");
+        ambil_data();
+      }
+      function ambil_data() {
+        $.ajax(
+          {
+            type: "GET",
+            url: "<?php echo base_url('Admin/setelan_sikp'); ?>"
+          }
+        ).done(function( data )
+        {
+          loading_page_end();
+          $('#viewdata').html(data);
+        });
+      }
+      function simpan(str)
+      {
+        swal({
+          title: "Anda Yakin?",
+          text: "Anda akan menyimpan data!",
+          type: "info",
+          showCancelButton: true,
+          closeOnConfirm: false,
+          showLoaderOnConfirm: true,
+        },
+        function(){
+          setTimeout(function(){
+            var data = new FormData();
+            data.append('nomor',$("#nomor").val());
+            data.append('jumlah',$("#jumlah").val());
+            data.append('tgl_mulai',$("#tgl_mulai").val());
+            data.append('email',$("#email").val());
+            data.append('id',str);
+            $.ajax({
+                type: "POST",
+                data: data,
+                processData: false,
+                contentType: false,
+                url: "<?php echo base_url('Admin/input_ubah_sikp')?>",
+                success: function(data)
+                {
+                  if (data==1)
+                  {
+                    swal("Sukses", "", "success");ambil_data();
+                  }
+                  else if(data==0)
+                  {
+                    swal("Oops...", "Terjadi kesalahan! Coba lagi.", "error");;
+                  }
+                  else{alert(data);}
+                },
+                error:function(data)
+                {swal("Oops...", "Terjadi kesalahan!!! Coba lagi.", "error");}
+            });
+          }, 2000);
+        });
+      }
+    </script>
+  </body>
+</html>
